@@ -1,0 +1,38 @@
+[
+    {
+        "reward_id": "d27c05cb-c628-4dbf-8a07-7bd5391f5c25",
+        "name": "Free Coffee",
+        "description": "Redeem for 1 free coffee at any Global station.",
+        "cost": 50,
+        "category": "Food",
+        "tier": "Bronze",
+        "is_active": true
+    },
+    {
+        "reward_id": "722741d5-89d7-4047-b077-63b06cfc5127",
+        "name": "Fuel Discount Voucher",
+        "description": "Get 5% off your next fuel purchase.",
+        "cost": 100,
+        "category": "Fuel",
+        "tier": "Silver",
+        "is_active": true
+    },
+    {
+        "reward_id": "ababba5d-ba97-4285-880b-4c3e07f19340",
+        "name": "Car Wash Pass",
+        "description": "Redeem for a free car wash.",
+        "cost": 75,
+        "category": "Service",
+        "tier": "Bronze",
+        "is_active": true
+    },
+    {
+        "reward_id": "f730c67d-3291-4e8c-a9b4-a2121b05f240",
+        "name": "Free Full Tank",
+        "description": "Get a voucher for a full tank of fuel (up to 50L).",
+        "cost": 500,
+        "category": "Fuel",
+        "tier": "Gold",
+        "is_active": true
+    }
+]

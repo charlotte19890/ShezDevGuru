@@ -1,0 +1,43 @@
+[
+    {
+        "competition_id": "8525e69a-3a0a-48fc-81f1-6082d37de954",
+        "name": "May Fuel Challenge",
+        "description": "Top 3 users who purchase the most fuel win big prizes.",
+        "start_date": "2025-05-01",
+        "end_date": "2025-05-31",
+        "prize": "Free fuel vouchers",
+        "participants": {
+            "3b208757-6597-40c0-b9c2-7d523ee45091": 50
+        },
+        "is_active": true
+    },
+    {
+        "competition_id": "9c86d632-8cd8-4e8b-a988-dcac4232e51b",
+        "name": "Referral King",
+        "description": "Refer as many new users as possible in June.",
+        "start_date": "2025-06-01",
+        "end_date": "2025-06-30",
+        "prize": "1 year of free car washes",
+        "participants": {
+            "a278a76e-24b9-47bf-85b0-f3f26a7424a5": 70
+        },
+        "is_active": true
+    },
+    {
+        "competition_id": "toyota_starlet_draw_2025",
+        "name": "Win a Toyota Starlet",
+        "description": "Spend R800 to stand a chance to win a Toyota Starlet!",
+        "start_date": "2025-06-01",
+        "end_date": "2025-08-02",
+        "draw_date": "2025-08-02",
+        "draw_time": "15:00",
+        "venue": "Senwabarwana",
+        "entry_requirement": "Spend R800",
+        "participants": {
+            "d018456f-a706-4a72-b6e6-50670e2cd157": 90,
+            "15035da6-6f29-422c-8ca3-d091acae6b65": 100,
+            "9cfdd80f-f372-40db-b5cb-4fca91d38d9e": 600,
+            "30ade5bc-1f28-4db2-8f82-64f93729e2e8": 9000
+        }
+    }
+]
