@@ -3,6 +3,8 @@ from core.activity import Activity
 from core.reward import Reward
 from db.data_manager import load_json, save_json
 from utils.helpers import current_timestamp
+from utils.helpers import speak
+from utils.helpers import current_timestamp, speak
 
 def create_user():
     """
@@ -23,6 +25,7 @@ def create_user():
     users.append(user.to_dict())
     save_json("users.json", users)
     print(f"✅ Created user {username}")
+    speak(f"user {username}created successful")
 
 
 POINTS_MAP = {
@@ -31,17 +34,48 @@ POINTS_MAP = {
     "referral": 25
 }
 
+# def log_activity():
+#     """
+#     Log a user activity and update their points based on predefined activity types.
+
+#     Steps:
+#     - Load existing users and display them for selection.
+#     - Prompt the user to choose an activity type and description.
+#     - Create a new Activity instance and add it to 'activities.json'.
+#     - Update the selected user’s points according to POINTS_MAP.
+#     - Save the updated user list back to 'users.json'.
+#     - Print a confirmation of the points added.
+#     """
+#     users = load_json("users.json")
+#     if not users:
+#         print("❌ No users found.")
+#         return
+
+#     for i, u in enumerate(users):
+#         print(f"{i + 1}. {u['username']} ({u['email']})")
+#     choice = int(input("Select user by number: ")) - 1
+#     user = users[choice]
+
+#     act_type = input("Activity type (fuel_purchase, login, referral): ").strip().lower()
+#     description = input("Description: ")
+
+#     activity = Activity(user['user_id'], act_type, description)
+#     activities = load_json("data/activities.json")
+#     activities.append(activity.to_dict())
+#     save_json("activities.json", activities)
+
+#     earned = POINTS_MAP.get(act_type, 0)
+#     user['points'] += earned
+#     users[choice] = user
+#     save_json("users.json", users)
+
+#     print(f"✅ Activity logged. {earned} points added to {user['username']}.")
+#     speak(f"{earned} points added to {user['username']}.")
+
 def log_activity():
     """
-    Log a user activity and update their points based on predefined activity types.
-
-    Steps:
-    - Load existing users and display them for selection.
-    - Prompt the user to choose an activity type and description.
-    - Create a new Activity instance and add it to 'activities.json'.
-    - Update the selected user’s points according to POINTS_MAP.
-    - Save the updated user list back to 'users.json'.
-    - Print a confirmation of the points added.
+    Logs a new activity for an existing user and awards points based on the type of activity.
+    Updates both the activities.json file and the user's points in users.json.
     """
     users = load_json("users.json")
     if not users:
@@ -67,6 +101,9 @@ def log_activity():
     save_json("users.json", users)
 
     print(f"✅ Activity logged. {earned} points added to {user['username']}.")
+    print("DEBUG: About to call speak()...")
+    speak(f"{earned} points added to {user['username']}.")
+    print("DEBUG: speak() call done.")
 
 
 def view_leaderboard():
@@ -134,6 +171,8 @@ def join_competition():
     save_json("competitions.json", competitions)
 
     print(f"✅ {user['username']} earned {points} pts in {competition['name']}")
+    speak(f"{user['username']} joined {competition['name']} with {points} points.")
+
 
 
 def show_competition_leaderboard():
@@ -158,6 +197,7 @@ def show_competition_leaderboard():
     print(f"\nLeaderboard for {comp['name']}:")
     for i, (uid, pts) in enumerate(sorted_lb):
         print(f"{i + 1}. User ID {uid[:8]}... - {pts} pts")
+        
 
 
 def redeem_reward():
@@ -206,6 +246,8 @@ def redeem_reward():
         print(f"🎁 {user['username']} redeemed {reward['name']}")
     else:
         print("❌ Not enough points")
+        speak(f"{user['username']} redeemed {reward['name']}.")
+
 
 
 def add_starlet_competition():

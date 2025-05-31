@@ -6,5 +6,29 @@
         "points": 0,
         "tier": "Bronze",
         "created_at": "2025-05-31T21:06:42.585952"
+    },
+    {
+        "user_id": "b4c49577-2211-47cc-af08-8bbea9e5b9eb",
+        "username": "& C:/Users/AbrahamR/AppData/Local/Programs/Python/Python310/python.exe c:/Users/AbrahamR/Downloads/gamification_app/gamification_app/test_voice.py",
+        "email": "& C:/Users/AbrahamR/AppData/Local/Programs/Python/Python310/python.exe c:/Users/AbrahamR/Downloads/gamification_app/gamification_app/test_voice.py",
+        "points": 0,
+        "tier": "Bronze",
+        "created_at": "2025-06-01T01:09:12.180287"
+    },
+    {
+        "user_id": "24c0b2b1-3b58-419a-bdc2-d9e7bf391745",
+        "username": "shasha",
+        "email": "shasha@gmail.com",
+        "points": 0,
+        "tier": "Bronze",
+        "created_at": "2025-06-01T01:10:30.174349"
+    },
+    {
+        "user_id": "613bfb09-8b28-4876-a0b0-e5ccc607e45e",
+        "username": "sharly",
+        "email": "sharly@gmail.com",
+        "points": 0,
+        "tier": "Bronze",
+        "created_at": "2025-06-01T01:20:29.001728"
     }
 ]

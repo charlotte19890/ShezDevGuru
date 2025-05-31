@@ -3,7 +3,13 @@ import uuid
 from datetime import datetime
 import smtplib
 from email.message import EmailMessage
+import pyttsx3
 
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+    
 def generate_id():
     return str(uuid.uuid4())
 
