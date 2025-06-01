@@ -7,8 +7,17 @@ import pyttsx3
 
 def speak(text):
     engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+
+    # Select a female voice (usually index 1 on Windows)
+    for voice in voices:
+        if "female" in voice.name.lower() or "zira" in voice.name.lower():
+            engine.setProperty('voice', voice.id)
+            break
+
     engine.say(text)
     engine.runAndWait()
+
     
 def generate_id():
     return str(uuid.uuid4())

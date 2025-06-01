@@ -19,7 +19,7 @@
         "user_id": "24c0b2b1-3b58-419a-bdc2-d9e7bf391745",
         "username": "shasha",
         "email": "shasha@gmail.com",
-        "points": 0,
+        "points": 25,
         "tier": "Bronze",
         "created_at": "2025-06-01T01:10:30.174349"
     },
@@ -30,5 +30,37 @@
         "points": 0,
         "tier": "Bronze",
         "created_at": "2025-06-01T01:20:29.001728"
+    },
+    {
+        "user_id": "67356258-a981-49f2-83cc-38ac44cefea3",
+        "username": "takali",
+        "email": "takali@gmail.com",
+        "points": 0,
+        "tier": "Bronze",
+        "created_at": "2025-06-01T19:24:06.852774"
+    },
+    {
+        "user_id": "2ddeabb1-9eac-49f5-8202-8a3dc34ba202",
+        "username": "mpho",
+        "email": "mpho@gmail.com",
+        "points": 0,
+        "tier": "Bronze",
+        "created_at": "2025-06-01T19:24:43.367722"
+    },
+    {
+        "user_id": "37ca899b-c432-46c3-8653-df1de1ce67c6",
+        "username": "sharlot",
+        "email": "sharlot @gmail.com",
+        "points": 0,
+        "tier": "Bronze",
+        "created_at": "2025-06-01T20:12:14.748574"
+    },
+    {
+        "user_id": "4b7452db-f223-44ce-a5e8-1a49af0c5e10",
+        "username": "charlotte",
+        "email": "sharlotte@gmail.com",
+        "points": 0,
+        "tier": "Bronze",
+        "created_at": "2025-06-01T20:16:34.196523"
     }
 ]
