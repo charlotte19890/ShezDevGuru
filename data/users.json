@@ -3,7 +3,7 @@
         "user_id": "4a222f4f-f922-4b2f-b2ed-52fc0126294e",
         "username": "sharlot",
         "email": "sharlotrambuda3@gmail.com",
-        "points": 0,
+        "points": 1,
         "tier": "Bronze",
         "created_at": "2025-05-31T21:06:42.585952"
     },
@@ -59,8 +59,16 @@
         "user_id": "4b7452db-f223-44ce-a5e8-1a49af0c5e10",
         "username": "charlotte",
         "email": "sharlotte@gmail.com",
-        "points": 0,
+        "points": 25,
         "tier": "Bronze",
         "created_at": "2025-06-01T20:16:34.196523"
+    },
+    {
+        "user_id": "34a5da23-ac7a-4682-a16b-b6e89d0dfdbf",
+        "username": "lindelani",
+        "email": "linde@gmail.com",
+        "points": 0,
+        "tier": "Bronze",
+        "created_at": "2025-06-11T21:28:30.276107"
     }
 ]
