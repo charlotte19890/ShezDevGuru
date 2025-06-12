@@ -3,19 +3,12 @@ from core.activity import Activity
 from core.reward import Reward
 from db.data_manager import load_json, save_json
 from utils.helpers import current_timestamp, speak
+from core import spin
+from core.spin import spin_wheel
+
+
 
 def create_user():
-    """
-    Prompt the user to input a username and email, then create a new User instance.
-    The new user is added to the 'users.json' file with initial point values.
-    
-    Steps:
-    - Collect username and email via user input.
-    - Create a new User object and convert it to a dictionary.
-    - Append the user to the existing users loaded from 'users.json'.
-    - Save the updated list back to the file.
-    - Print confirmation of user creation.
-    """
     username = input("Username: ")
     email = input("Email: ")
     user = User(username, email)
@@ -25,7 +18,6 @@ def create_user():
     print(f"✅ Created user {username}")
     speak(f"User {username} created successfully.")
 
-
 POINTS_MAP = {
     "fuel_purchase": 10,
     "login": 1,
@@ -33,17 +25,6 @@ POINTS_MAP = {
 }
 
 def log_activity():
-    """
-    Log a user activity and update their points based on predefined activity types.
-
-    Steps:
-    - Load existing users and display them for selection.
-    - Prompt the user to choose an activity type and description.
-    - Create a new Activity instance and add it to 'activities.json'.
-    - Update the selected user’s points according to POINTS_MAP.
-    - Save the updated user list back to 'users.json'.
-    - Print a confirmation of the points added.
-    """
     users = load_json("users.json")
     if not users:
         print("❌ No users found.")
@@ -71,14 +52,6 @@ def log_activity():
     speak("Activity logged successfully.")
 
 def view_leaderboard():
-    """
-    Display the top 10 users ranked by their points.
-
-    Steps:
-    - Load users from 'users.json'.
-    - Sort users in descending order of points.
-    - Display the top 10 users with their rank and point total.
-    """
     users = load_json("users.json")
     leaderboard = sorted(users, key=lambda x: x['points'], reverse=True)
     print("\n🏆 Leaderboard:")
@@ -87,20 +60,6 @@ def view_leaderboard():
         speak("Here is the leaderboard.")
 
 def join_competition():
-    """
-    Allow a user to join a monthly competition by contributing points.
-
-    Special Handling:
-    - For "toyota_starlet_draw_2025", the user must have spent R800 or more.
-    - Other competitions allow manual point entry.
-
-    Steps:
-    - Load users and competitions.
-    - Prompt selection of user and competition.
-    - Validate and calculate points to be added based on competition rules.
-    - Update the competition's participant list and save it.
-    - Print confirmation of participation and earned points.
-    """
     users = load_json("users.json")
     competitions = load_json("competitions.json")
 
@@ -138,15 +97,6 @@ def join_competition():
     speak("You have joined the competition.")
 
 def show_competition_leaderboard():
-    """
-    Display the leaderboard for a selected competition.
-
-    Steps:
-    - Load competitions and display available options.
-    - Prompt user to select a competition.
-    - Sort and display participants by their earned points.
-    - Show user IDs (shortened) and corresponding points.
-    """
     competitions = load_json("competitions.json")
     for i, c in enumerate(competitions):
         print(f"{i + 1}. {c['name']}")
@@ -162,16 +112,6 @@ def show_competition_leaderboard():
         speak("This is the competition leaderboard.")
 
 def redeem_reward():
-    """
-    Allow a user to redeem a reward if they have enough points.
-
-    Steps:
-    - Load users and rewards.
-    - Prompt selection of user and reward.
-    - Check if user has enough points.
-    - Deduct points and record the redemption in 'redemptions.json'.
-    - Save updated user data and confirm reward redemption.
-    """
     users = load_json("users.json")
     rewards = load_json("rewards.json")
 
@@ -208,18 +148,11 @@ def redeem_reward():
     else:
         print("❌ Not enough points")
 
-
 def add_starlet_competition():
-    """
-    Add the 'Toyota Starlet Draw 2025' competition to the system if it doesn't already exist.
-
-    The competition requires users to spend at least R800 to qualify.
-    Details such as draw date, time, and venue are predefined.
-    """
     competitions = load_json("competitions.json")
     for c in competitions:
         if c.get("competition_id") == "toyota_starlet_draw_2025":
-            return  # Already added
+            return
 
     competition = {
         "competition_id": "toyota_starlet_draw_2025",
@@ -239,24 +172,9 @@ def add_starlet_competition():
     speak("Reward redeemed.")
 
 def main():
-    """
-    Entry point for the Swift Fuel Loyalty Console application.
-
-    Runs a continuous loop displaying the main menu, allowing the user to:
-    - Create a user
-    - Log activity
-    - Redeem rewards
-    - View leaderboard
-    - Join a competition
-    - View competition leaderboard
-    - Exit the program
-
-    The Toyota Starlet competition is added at startup if not already present.
-    """
     add_starlet_competition()
 
     while True:
-        # Display the menu (vertical list)
         print("\n=== Swift Fuel Loyalty Console ===")
         print("Spend R800 to enter Toyota Starlet draw! Draw: 2 August 2025 at 15:00 in Senwabarwana.")
         print("1. Create User")
@@ -265,19 +183,18 @@ def main():
         print("4. View Leaderboard")
         print("5. Join Monthly Competition")
         print("6. Show Competition Leaderboard")
+        print("7. Spin the Wheel")
         print("0. Exit")
 
-        # Speak the options (female voice already configured)
         menu_text = (
             "Swift Fuel Loyalty Console. Spend 800 Rand to enter the Toyota Starlet draw. "
             "The draw is on the second of August 2025 at 3 PM in Senwabarwana. "
             "Press 1 to create user. Press 2 to log activity. Press 3 to redeem a reward. "
             "Press 4 to view leaderboard. Press 5 to join monthly competition. "
-            "Press 6 to show competition leaderboard. Press 0 to exit."
+            "Press 6 to show competition leaderboard. Press 7 to spin the wheel. Press 0 to exit."
         )
         speak(menu_text)
 
-        # Get input
         choice = input("Choose: ")
 
         if choice == "1":
@@ -292,6 +209,10 @@ def main():
             join_competition()
         elif choice == "6":
             show_competition_leaderboard()
+        elif choice == "7":
+            result = spin_wheel()
+            print(f"🎉 Result: {result}")
+            speak(result)
         elif choice == "0":
             break
         else:
